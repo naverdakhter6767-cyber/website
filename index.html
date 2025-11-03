@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Professional Business Insider</title>
+  <style>
+    /* Reset and base styles */
+    body {
+      margin: 0; padding: 0;
+      font-family: "Arial Black", Arial, sans-serif;
+      background: #fff;
+      color: #000;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header */
+    header {
+      border-bottom: 1px solid #ddd;
+      padding: 10px 0 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo svg {
+      height: 50px;
+      width: auto;
+    }
+    .header-right {
+      font-weight: 700;
+      font-family: Arial, sans-serif;
+      font-size: 0.9rem;
+      display: flex;
+      gap: 1.3rem;
+      align-items: center;
+      color: #000;
+    }
+    .header-right a.subscribe {
+      color: #0046ff;
+      font-weight: 700;
+    }
+    .header-right a:hover {
+      text-decoration: underline;
+    }
+    .hamburger {
+      background: black;
+      border-radius: 50%;
+      color: white;
+      font-weight: 700;
+      border: none;
+      font-size: 1.3rem;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    /* Navigation Bar */
+    nav {
+      border-bottom: 1px solid #ddd;
+      padding: 10px 0;
+      font-weight: bold;
+      font-family: Arial, sans-serif;
+      font-size: 1rem;
+    }
+    nav ul {
+      list-style-type: none;
+      padding-left: 0;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    nav ul li {
+      position: relative;
+    }
+    nav ul li:not(:last-child)::after {
+      content: '|';
+      position: absolute;
+      right: -10px;
+      color: #555;
+    }
+    nav a {
+      color: #000;
+      font-weight: 600;
+    }
+    nav a:hover {
+      color: #0046ff;
+    }
+
+    /* Market Briefing Bar */
+    .market-briefing {
+      font-family: Arial, sans-serif;
+      font-weight: 700;
+      padding: 12px 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 1px solid #ddd;
+      font-size: 0.9rem;
+      overflow-x: auto;
+    }
+    .market-greeting {
+      white-space: nowrap;
+    }
+    .briefing-button {
+      background: #cfe1ff;
+      border-radius: 20px;
+      padding: 5px 12px;
+      color: #0046ff;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .briefing-button svg {
+      fill: #0046ff;
+      width: 14px;
+      height: 14px;
+    }
+    .stocks {
+      display: flex;
+      gap: 1rem;
+      white-space: nowrap;
+    }
+    .stock {
+      font-weight: 600;
+      display: flex;
+      gap: 5px;
+      align-items: center;
+    }
+    .stock.positive {
+      color: #008000;
+    }
+    .stock.negative {
+      color: #d00;
+    }
+
+    /* Articles Grid */
+    main {
+      padding: 24px 0;
+      font-family: Arial, sans-serif;
+    }
+    main h2 {
+      font-weight: 700;
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+    }
+    .articles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+    article {
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      overflow: hidden;
+      background: #fff;
+      cursor: pointer;
+      transition: box-shadow 0.2s ease;
+    }
+    article:hover {
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    article img {
+      width: 100%;
+      object-fit: cover;
+      height: 170px;
+      display: block;
+    }
+    article h3 {
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin: 12px 12px 6px;
+      line-height: 1.2;
+    }
+    article p {
+      font-size: 0.9rem;
+      margin: 0 12px 12px;
+      color: #555;
+      font-weight: 400;
+      line-height: 1.3;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid #ddd;
+      padding: 18px 0;
+      font-family: Arial, sans-serif;
+      font-size: 0.9rem;
+      color: #888;
+      text-align: center;
+    }
+    footer a {
+      color: #0046ff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header class="container">
+    <div class="logo" aria-label="Business Insider Logo" role="img">
+      <!-- Business Insider logo SVG from screenshot -->
+      <svg viewBox="0 0 253 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+        <path fill="#000" d="M26.252 0h-7.608v32h7.734c7.704 0 11.068-5.03 11.068-15.986C37.446 4.886 32.47 0 26.252 0zm-1.81 25.522h-2.636V6.504h2.636c4.587 0 7.3 2.06 7.3 9.231 0 7.594-2.736 9.787-7.3 9.787zm87.522-12.12c1.98-1.475 3.212-3.454 2.77-6.504-4.04.776-7.716 3.129-9.275 6.27 3.4 0 6.15-.008 6.505.004zm-339.374-8.688c-6.706 0-11.174 4.215-11.174 11.112v9.92H2.09V3.799h3.798l21.878 27.746-21.878 0.002v-5.333h-9.314v-7.178h0.262c0-5.585 4.584-10.298 11.54-10.298 3.9 0 7.284 1.278 9.502 3.43V6.714c-2.22-2.647-5.49-4.248-9.016-4.248zm8.314 5.729v7.102h6.302v5.82h-6.302v7.416c0 6.08 5.06 10.22 11.27 10.22 4.012 0 8.632-1.773 11.212-4.236v-7.082a10.45 10.45 0 01-9.204 5.442c-3.565 0-6.788-1.418-8.565-4.238h8.157v-5.82h-8.116v-7.182h6.81v-7.066h-8.114zm108.325 5.432v10.367a6.324 6.324 0 016.458-4.96c4.09 0 7.044 3.005 7.044 7.21 0 5.003-3.642 8.044-7.798 8.045-3.373 0-5.34-1.695-6.01-2.999v10.007h-5.694V10.895h5.815zm5.693 13.208a5.22 5.22 0 004.674-3.383c-2.135-.763-4.12-1.421-6.75-2.572v5.287h2.076zm32.595-6.914v10.367a6.324 6.324 0 016.457-4.96c4.09 0 7.045 3.005 7.045 7.21 0 5.003-3.643 8.044-7.8 8.045-3.372 0-5.339-1.695-6.01-2.999v10.007h-5.694V10.895h5.815zm5.694 13.208a5.223 5.223 0 004.674-3.383c-2.136-.763-4.12-1.421-6.75-2.572v5.287h2.076z"/>
+      </svg>
+    </div>
+    <div class="header-right">
+      <a href="#" class="subscribe" aria-label="Subscribe link">Subscribe</a>
+      <span aria-hidden="true">|</span>
+      <a href="#" aria-label="Newsletters link">Newsletters</a>
+      <button class="hamburger" aria-label="Open menu">&#9776;</button>
+    </div>
+  </header>
+
+  <nav class="container" role="navigation" aria-label="Main navigation">
+    <ul>
+      <li><a href="#business">Business</a></li>
+      <li><a href="#tech">Tech</a></li>
+      <li><a href="#markets">Markets</a></li>
+      <li><a href="#lifestyle">Lifestyle</a></li>
+      <li><a href="#politics">Politics</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#video">Video</a></li>
+      <li><a href="#search" aria-label="Search">&#x1F50D;</a></li>
+    </ul>
+  </nav>
+
+  <section class="container market-briefing" aria-label="Market briefing and stocks performance">
+    <div class="market-greeting"><strong>Good afternoon!</strong></div>
+    <button class="briefing-button" aria-label="Your Briefing">
+      <svg viewBox="0 0 12 14" xmlns="http://www.w3.org/2000/svg"><path d="M1 1l10 6-10 6V1z" /></svg>
+      Your Briefing
+    </button>
+
+    <div class="stocks" aria-live="polite">
+      <div class="stock positive" aria-label="Dow Jones up 0.09 percent">DOW JONES ▲ +0.09%</div>
+      <div class="stock positive" aria-label="NASDAQ up 0.48 percent">NASDAQ ▲ +0.48%</div>
+      <div class="stock positive" aria-label="S and P 500 up 0.26 percent">S&P 500 ▲ +0.26%</div>
+      <div class="stock positive" aria-label="MSFT up 0.1 percent">MSFT ▲ +0.1%</div>
+      <div class="stock negative" aria-label="TSLA down 0.12 percent">TSLA ▼ -0.12%</div>
+      <div class="stock negative" aria-label="MSFT down 0.01 percent">MSFT ▼ -0.01%</div>
+      <div class="stock positive" aria-label="META up 0.42 percent">META ▲ +0.42%</div>
+      <div class="stock" aria-label="AMZN no change">AMZN 0%</div>
+    </div>
+  </section>
+
+  <main class="container" aria-label="Top news articles">
+    <h2>Top Stories</h2>
+    <div class="articles-grid">
+      <article tabindex="0" role="article" aria-labelledby="art1-title" aria-describedby="art1-desc">
+        <img src="https://static.businessinsider.com/image/650df1406521790018f86dfb-1920/business-insider-building-in-san-francisco.jpg" alt="Business Insider building" />
+        <h3 id="art1-title">Business Insider’s Transformation: What's Next?</h3>
+        <p id="art1-desc">Business Insider is undergoing significant changes as it adapts to evolving media landscapes. Here's what to expect.</p>
+      </article>
+
+      <article tabindex="0" role="article" aria-labelledby="art2-title" aria-describedby="art2-desc">
+        <img src="https://static.businessinsider.com/image/64b2e270359bc200188ff46a-1920/katie-vogel-on-unsplash.jpg" alt="Tech conference scene" />
+        <h3 id="art2-title">The Future of Tech: Innovations to Watch in 2025</h3>
+        <p id="art2-desc">From AI breakthroughs to green tech, we explore upcoming technologies set to change the world.</p>
+      </article>
+
+      <article tabindex="0" role="article" aria-labelledby="art3-title" aria-describedby="art3-desc">
+        <img src="https://static.businessinsider.com/image/64a6d5bccd2f0a0018b6763f-1920/people-in-business-meeting.jpg" alt="Business people meeting" />
+        <h3 id="art3-title">Markets Update: Trends Driving Investments Now</h3>
+        <p id="art3-desc">Latest market trends reveal new investment opportunities, risks, and shifts in consumer behavior to watch.</p>
+      </article>
+
+      <article tabindex="0" role="article" aria-labelledby="art4-title" aria-describedby="art4-desc">
+        <img src="https://static.businessinsider.com/image/648bb7a511fc54f0073153ed-1920/woman-typing-on-laptop.jpg" alt="Lifestyle and work scene" />
+        <h3 id="art4-title">Lifestyle & Work: Navigating New Norms</h3>
+        <p id="art4-desc">How lifestyle changes and remote work are influencing business culture and personal wellbeing.</p>
+      </article>
+    </div>
+  </main>
+
+  <footer class="container" role="contentinfo">
+    <p>&copy; 2025 Professional Business Insider. All rights reserved.</p>
+    <p>
+      AdSense policies observed.  
+      See <a href="https://support.google.com/adsense/answer/48182" target="_blank" rel="noopener">AdSense Program Policies</a> and <a href="https://policies.google.com/terms" target="_blank" rel="noopener">Google Terms of Service</a>.
+    </p>
+  </footer>
+</body>
+</html>
